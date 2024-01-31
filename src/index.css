@@ -6,6 +6,7 @@
 	font-family: "Quicksand";
 	color: #000000;
 }
+
 .navbar {
 	padding: 30px;
 	display: flex;
@@ -46,8 +47,55 @@
 	background-color: rgba(179, 174, 174, 0.438);
 	border-radius: 10px;
 }*/
+.home button {
+	--c: #229091; /* the color*/
+	margin-top: 30px;
+	box-shadow: 0 0 0 0.1em inset var(--c);
+	--_g: linear-gradient(var(--c) 0 0) no-repeat;
+	background: var(--_g) calc(var(--_p, 0%) - 100%) 0%,
+		var(--_g) calc(200% - var(--_p, 0%)) 0%,
+		var(--_g) calc(var(--_p, 0%) - 100%) 100%,
+		var(--_g) calc(200% - var(--_p, 0%)) 100%;
+	background-size: 50.5% calc(var(--_p, 0%) / 2 + 0.5%);
+	outline-offset: 0.1em;
+	transition: background-size 0.4s,
+		background-position 0s 0.4s;
+}
+
+.home button {
+	font-family: system-ui, sans-serif;
+	font-size: 1rem;
+	cursor: pointer;
+	padding: 0.1em 0.6em;
+	font-weight: bold;
+	border-radius: 10px;
+}
+.home button:active {
+	box-shadow: 0 0 9e9Q inset #0009;
+	background-color: var(--c);
+	color: #fff;
+}
+.home button:hover {
+	--_p: 100%;
+	color: #000000;
+	transition: background-position 0.4s, background-size 0s;
+}
 .content {
 	max-width: 600px;
 	margin: 40px auto;
 	padding: 20px;
+}
+/* blog previews / list */
+.blog-preview {
+	padding: 10px 16px;
+	margin: 20px 0;
+	border-bottom: 1px solid #fafafa;
+}
+.blog-preview:hover {
+	box-shadow: 1px 3px 30px rgba(0, 0, 0, 0.342);
+}
+.blog-preview h2 {
+	font-size: 20px;
+	color: #e40f0f;
+	margin-bottom: 8px;
 }
