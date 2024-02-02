@@ -48,7 +48,7 @@
 	border-radius: 10px;
 }*/
 .home button {
-	--c: #229091; /* the color*/
+	--c: #da0f0f; /* the color*/
 	margin-top: 30px;
 	box-shadow: 0 0 0 0.1em inset var(--c);
 	--_g: linear-gradient(var(--c) 0 0) no-repeat;
@@ -63,6 +63,7 @@
 }
 
 .home button {
+	margin-left: 400px;
 	font-family: system-ui, sans-serif;
 	font-size: 1rem;
 	cursor: pointer;
