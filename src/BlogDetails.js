@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import LikesController from "./LikesController";
 import useFetch from "./useFetch";
 const BlogDetails = () => {
 	const { id } = useParams();
@@ -14,6 +15,7 @@ const BlogDetails = () => {
 				<article>
 					<h2>{blogs.title}</h2>
 					<div>{blogs.body}</div>
+					<LikesController />
 				</article>
 			)}
 		</div>

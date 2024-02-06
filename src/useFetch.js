@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const useFetch = (url) => {
 	const [blogs, setBlogs] = useState(null);
-	const [isPending, setIspending] = useState(true);
+	const [isPending, setIsPending] = useState(true);
 	const [error, setError] = useState(null);
 	useEffect(() => {
 		const abortCont = new AbortController();
@@ -19,14 +19,14 @@ const useFetch = (url) => {
 			.then((data) => {
 				console.log(data);
 				setBlogs(data);
-				setIspending(false);
+				setIsPending(false);
 				setError(false);
 			})
 			.catch((err) => {
 				if (err.name === "AbortError") {
 					console.log("fetch aborted");
 				} else {
-					setIspending(false);
+					setIsPending(false);
 					setError(err.message);
 				}
 			});
