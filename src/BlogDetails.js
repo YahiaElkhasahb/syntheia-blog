@@ -8,12 +8,14 @@ const BlogDetails = () => {
 	);
 
 	return (
-		<div className="blog-details">
+		<div className="my-[10px] mx-[0px]">
 			{isPending && <div>Loading...</div>}
 			{error && <div>{error}</div>}
 			{blogs && (
 				<article>
-					<h2>{blogs.title}</h2>
+					<h2 className="text-[20px] text-[#e40f0f] mb-[10px] font-semibold ">
+						{blogs.title}
+					</h2>
 					<div>{blogs.body}</div>
 					<LikesController />
 				</article>

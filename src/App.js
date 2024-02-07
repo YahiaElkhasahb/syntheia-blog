@@ -13,7 +13,7 @@ function App() {
 		<Router>
 			<div className="App">
 				<Navbar />
-				<div className="content">
+				<div className="max-w-[600px] mx-[auto] my-[40px] p-[20px] m-0 font-[Quicksand] text-[#000000]">
 					<Switch>
 						<Route exact path="/">
 							<Home />

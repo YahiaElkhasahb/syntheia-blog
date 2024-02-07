@@ -52,12 +52,11 @@ const LikesController = () => {
 			{isPending && <div>loading..</div>}
 
 			{!isPending && (
-				<div className="like-controller">
-					<div className="like-controller-buttons">
+				<div className="flex flex-col items-center justify-center">
+					<div className="flex items-center bg-[#fff] px-[50px] py-[30px] rounded-[12px]">
 						<button
-							className={`button ${
-								activeButton === "like" ? "like-active" : ""
-							}`}
+							className={`"border-[none] text-[#fff] text-[0.8rem] flex items-center gap-[6px] bg-[#bdc0c5] rounded-[4px] px-[15px] py-[6px] mx-[10px] my-[0]" 
+							${activeButton === "like" ? "bg-[#3dd3eb]" : ""}`}
 							onClick={handleLike}
 						>
 							<link
@@ -71,9 +70,9 @@ const LikesController = () => {
 						</button>
 
 						<button
-							className={`button ${
+							className={`"border-[none] text-[#fff] text-[0.8rem] flex items-center gap-[6px] bg-[#bdc0c5] rounded-[4px] px-[15px] py-[6px] mx-[10px] my-[0]" ${
 								activeButton === "dislike"
-									? "dislike-active"
+									? " bg-[#f70000]"
 									: ""
 							}`}
 							onClick={handleDislike}
