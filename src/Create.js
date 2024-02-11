@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Create = () => {
-	const [title, setTitle] = useState(" ");
-	const [body, setBody] = useState(" ");
-	const [brief, setBrief] = useState(" ");
+	const [title, setTitle] = useState("");
+	const [body, setBody] = useState("");
+	const [brief, setBrief] = useState("");
+	const [error, setError] = useState("");
 	const [date, setCurrentDate] = useState(getDate());
+	const [isPending, setIsPending] = useState(false);
+	const history = useHistory();
 	function getDate() {
 		const today = new Date();
 		const month = today.getMonth() + 1;
@@ -14,15 +18,27 @@ const Create = () => {
 	}
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		const blog = { title, body, brief, date };
+		setIsPending(true);
+		if (
+			title.trim() === "" ||
+			body.trim() === "" ||
+			brief.trim() === ""
+		) {
+			setError("Please enter a non-empty value.");
+		} else {
+			setError("");
+			const blog = { title, body, brief, date };
 
-		fetch("http://localhost:8000/blogs/", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(blog),
-		}).then(() => {
-			console.log("new blog added");
-		});
+			fetch("http://localhost:8000/blogs/", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(blog),
+			}).then(() => {
+				console.log("new blog added");
+				setIsPending(false);
+				history.push("/");
+			});
+		}
 	};
 
 	return (
@@ -67,9 +83,20 @@ const Create = () => {
 				>
 					Blog Time : {date}
 				</label>
-				<button className="m-10 px-[10px] py-1 rounded-[6px] bg-[#ff3e3e] hover:bg-[#ec4e4e85] cursor-pointer">
-					Add Blog
-				</button>
+				{!isPending && (
+					<button className="m-10 px-[10px] py-1 rounded-[6px] bg-[#ff3e3e] hover:bg-[#ec4e4e85] cursor-pointer">
+						Add Blog
+					</button>
+				)}
+				{isPending && (
+					<button
+						className="m-10 px-[10px] py-1 rounded-[6px] bg-[#ff3e3e] hover:bg-[#ec4e4e85] cursor-pointer"
+						disabled
+					>
+						Adding Blog ...
+					</button>
+				)}
+				{error && <p>{error}</p>}
 			</form>
 		</div>
 	);
